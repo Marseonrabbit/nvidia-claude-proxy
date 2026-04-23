@@ -147,17 +147,123 @@ https://nvidia-anthropic-proxy.xxx.workers.dev
 
 Edit `~/.claude/settings.json`:
 
-```json
 {
   "env": {
-    "ANTHROPIC_BASE_URL": "https://nvidia-anthropic-proxy.xxx.workers.dev",
-    "ANTHROPIC_API_KEY": "your-auth-token-or-any-non-empty-string",
-    "ANTHROPIC_DEFAULT_OPUS_MODEL": "moonshotai/kimi-k2.5",
-    "ANTHROPIC_DEFAULT_SONNET_MODEL": "minimaxai/minimax-m2.7",
-    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "z-ai/glm-5.1"
-  }
+    "ANTHROPIC_AUTH_TOKEN": "test",
+    "ANTHROPIC_API_KEY": "test",
+    "ANTHROPIC_BASE_URL": "https://nvidia-anthropic-proxy.myvikashh.workers.dev",
+    "ANTHROPIC_MODEL": "minimaxai/minimax-m2.7",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "deepseek-ai/deepseek-v3.2",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "nvidia/nemotron-3-super-120b-a12b",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "z-ai/glm-5.1",
+    "CLAUDE_CODE_SUBAGENT_MODEL": "minimaxai/minimax-m2.7",
+    "ENABLE_EXPERIMENTAL_MCP_CLI": "true"
+  },
+  "permissions": {
+    "allow": [
+      "*"
+    ]
+  },
+  "model": "haiku",
+  "enabledPlugins": {
+    "fullstack-engineer@claude-code-skills": true,
+    "claude-mem@thedotmack": true,
+    "a11y-audit@claude-code-skills": true,
+    "frontend-design@claude-plugins-official": true,
+    "superpowers@claude-plugins-official": true,
+    "zoom-plugin@claude-plugins-official": true,
+    "playwright@claude-plugins-official": true,
+    "antigravity-bundle-apple-platform-design@antigravity-awesome-skills": true,
+    "antigravity-bundle-web-wizard@antigravity-awesome-skills": true,
+    "everything-claude-code@everything-claude-code": true,
+    "marketing-skills@claude-code-skills": true,
+    "marketing-skills@marketingskills": true,
+    "context-mode@context-mode": true,
+    "plugin-dev@claude-plugins-official": true,
+    "searchfit-seo@claude-plugins-official": true,
+    "superpowers@superpowers-dev": true,
+    "swift-lsp@claude-plugins-official": true,
+    "ui-ux-pro-max@ui-ux-pro-max-skill": true,
+    "zoominfo@claude-plugins-official": true,
+    "playground@claude-plugins-official": true
+  },
+  "skipDangerousModePermissionPrompt": true,
+  "version": "1.0",
+  "defaults": {
+    "model": "minimaxai/minimax-m2.7"
+  },
+  "customModels": [
+    {
+      "id": "meta/llama-3.3-70b-instruct",
+      "name": "Llama 3.3 70B",
+      "provider": "Meta"
+    },
+    {
+      "id": "deepseek-ai/deepseek-v3",
+      "name": "DeepSeek V3",
+      "provider": "DeepSeek"
+    },
+    {
+      "id": "nvidia/llama-3.1-nemotron-70b-instruct",
+      "name": "Nemotron 70B",
+      "provider": "NVIDIA"
+    },
+    {
+      "id": "meta/llama-3.1-8b-instruct",
+      "name": "Llama 3.1 8B",
+      "provider": "Meta"
+    },
+    {
+      "id": "z-ai/glm-5.1",
+      "name": "GLM-5.1",
+      "provider": "Z-AI"
+    },
+    {
+      "id": "nvidia/nemotron-3-super-120b-a12b",
+      "name": "Nemotron Super 120B",
+      "provider": "NVIDIA"
+    },
+    {
+      "id": "deepseek-ai/deepseek-r1",
+      "name": "DeepSeek R1",
+      "provider": "DeepSeek"
+    }
+  ],
+  "mcpServers": {
+    "filesystem": {
+      "command": "C:/Program Files/nodejs/npx.cmd",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "/"
+      ],
+      "env": {
+        "MCP_FILESYSTEM_ALLOWED_DIRECTORIES": "/"
+      }
+    },
+    "pencil": {
+      "command": "C:/Program Files/nodejs/npx.cmd",
+      "args": [
+        "-y",
+        "pencil-mcp"
+      ]
+    },
+    "playwright": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@playwright/mcp@latest"
+      ]
+    }
+  },
+  "skillsPaths": [
+    "~/.claude/skills",
+    "~/.claude/plugins/*/skills"
+  ],
+  "debug": false,
+  "logLevel": "info"
 }
-```
+
 
 ### 5. Start Using
 
