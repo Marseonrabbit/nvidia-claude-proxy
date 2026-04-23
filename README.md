@@ -151,7 +151,7 @@ Edit `~/.claude/settings.json`:
   "env": {
     "ANTHROPIC_AUTH_TOKEN": "test",
     "ANTHROPIC_API_KEY": "test",
-    "ANTHROPIC_BASE_URL": "https://nvidia-anthropic-proxy.myvikashh.workers.dev",
+    "ANTHROPIC_BASE_URL": "https://nvidia-anthropic-proxy.workers.dev",
     "ANTHROPIC_MODEL": "minimaxai/minimax-m2.7",
     "ANTHROPIC_DEFAULT_OPUS_MODEL": "deepseek-ai/deepseek-v3.2",
     "ANTHROPIC_DEFAULT_SONNET_MODEL": "nvidia/nemotron-3-super-120b-a12b",
