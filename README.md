@@ -146,7 +146,7 @@ https://nvidia-anthropic-proxy.xxx.workers.dev
 ### 4. Configure Claude Code
 
 Edit `~/.claude/settings.json`:
-
+```
 {
   "env": {
     "ANTHROPIC_AUTH_TOKEN": "test",
@@ -263,7 +263,7 @@ Edit `~/.claude/settings.json`:
   "debug": false,
   "logLevel": "info"
 }
-
+```
 
 ### 5. Start Using
 
