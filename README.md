@@ -1,4 +1,4 @@
-# NVIDIA Anthropic Proxy
+# NVIDIA claude Proxy
 
 A Cloudflare Worker proxy that enables OpenAI-compatible APIs (like NVIDIA NIM) to work with Anthropic API clients such as Claude Code.
 
