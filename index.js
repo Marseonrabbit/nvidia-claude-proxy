@@ -6,24 +6,26 @@ const DEFAULT_HAIKU_MODEL = 'z-ai/glm-5.1';
 const DEFAULT_FALLBACK_MODEL = 'deepseek-ai/deepseek-v3.2';
 const DEFAULT_TOOL_MODEL = 'deepseek-ai/deepseek-v3.2'; // Ensures DeepSeek is used for tools
 const DEFAULT_MAX_UPSTREAM_RETRIES = 2; // Reduced from 3 to fail faster if dead
-const DEFAULT_RETRY_BASE_DELAY_MS = 200; // Fast recovery - 200ms instead of 1000ms
-const DEFAULT_UPSTREAM_TIMEOUT_MS = 15000; // Reduced from 60s to 15s to prevent hanging completely
-const MAX_RETRY_DELAY_MS = 15000; // Reduced from 30s to 15s
-// 429 (rate limit) and specific 4xx - skip retry for these unless handled specially
-// Only retry on server errors (5xx) and specific network errors
-const RETRYABLE_UPSTREAM_STATUS = new Set([408, 409, 425, 500, 502, 503, 504, 520, 522, 524]);
+const DEFAULT_RETRY_BASE_DELAY_MS = 300; // Slightly increased for better 429 handling
+const DEFAULT_UPSTREAM_TIMEOUT_MS = 30000; // Increased from 15s to 30s for better cold-start reliability
+const MAX_RETRY_DELAY_MS = 15000; 
+// 429 (rate limit) and specific 4xx - now including 429 for limited retries
+const RETRYABLE_UPSTREAM_STATUS = new Set([408, 409, 425, 429, 500, 502, 503, 504, 520, 522, 524]);
+
 
 // Models known to have robust MCP/tool support
 const TOOL_CAPABLE_MODELS = new Set([
   'moonshotai/kimi-k2.5',
   'minimaxai/minimax-m2.7',
+  'minimax/minimax-01', // Added current NVIDIA Minimax model
   'nvidia/nemotron-3-super-120b-a12b',
   'z-ai/glm-4.7',
   'z-ai/glm-5.1',
   'deepseek-ai/deepseek-v3',
-  'deepseek-ai/deepseek-v3.2', // Added to prevent silent routing away from it
+  'deepseek-ai/deepseek-v3.2', 
   'deepseek-ai/deepseek-r1',
 ]);
+
 
 // Estimated context limits for proactive token management
 const ESTIMATED_MODEL_LIMITS = {
@@ -40,8 +42,9 @@ const ESTIMATED_MODEL_LIMITS = {
 
 const RETIRED_OR_UNAVAILABLE_MODELS = new Set([
   'minimaxai/minimax-m2.1',
-  'minimaxai/minimax-m2.7', // Added because user said it's not responding
+  // Removed minimax-m2.7 from retired list to give it another chance with longer timeouts
 ]);
+
 
 // Tool/MCP error patterns for detection
 const TOOL_ERROR_PATTERNS = [
@@ -533,6 +536,7 @@ function handleStreamWithBackgroundFetch(openaiRequest, config, requestId, reque
               details: errorDetails
             }
           });
+          clearInterval(pingInterval);
           await writer.write(encoder.encode(`event: error\ndata: ${errorJson}\n\n`));
           await writer.close();
           return;
@@ -540,6 +544,7 @@ function handleStreamWithBackgroundFetch(openaiRequest, config, requestId, reque
       }
 
       clearInterval(pingInterval);
+
       logRequest(requestId, 'NVIDIA', 'response_received', { stream: true });
       
       // Process the successful stream
@@ -721,11 +726,15 @@ async function callNvidiaApiWithRetry(openaiRequest, config, requestId) {
 
     const errorText = await safeReadResponseText(response);
 
-    // Skip retry for rate limits (429) - backoff makes it worse under load
-    if (response.status === 429) {
-      logRequest(requestId, 'NVIDIA', 'rate_limited', { skipRetry: true });
-      return { response, errorText, attempts: attempt };
+    // Limited retry for rate limits (429)
+    if (response.status === 429 && attempt < 1) {
+      logRequest(requestId, 'NVIDIA', 'rate_limited_retry', { attempt: attempt + 1 });
+      const retryDelayMs = computeRetryDelayMs(response, attempt, config.retryBaseDelayMs);
+      await sleep(retryDelayMs);
+      attempt += 1;
+      continue;
     }
+
 
     // Skip retry if not retryable or max retries reached
     if (!RETRYABLE_UPSTREAM_STATUS.has(response.status) || attempt >= config.maxUpstreamRetries) {
@@ -1734,29 +1743,34 @@ function logError(requestId, error, context = {}) {
  * Very rough estimation: 4 chars per token + fixed overhead
  */
 function estimateRequestTokens(request) {
-  let chars = 0;
+  let tokens = 200; // Fixed overhead
   
   if (request.system) {
-    chars += extractSystemText(request.system).length;
+    const text = extractSystemText(request.system);
+    tokens += Math.ceil(text.length / 3.8); // Slightly more conservative (lower divisor)
   }
   
   if (request.messages) {
     for (const msg of request.messages) {
+      tokens += 4; // Overhead per message
       if (typeof msg.content === 'string') {
-        chars += msg.content.length;
+        tokens += Math.ceil(msg.content.length / 3.8);
       } else if (Array.isArray(msg.content)) {
         for (const block of msg.content) {
           if (block.type === 'text' && block.text) {
-            chars += block.text.length;
+            tokens += Math.ceil(block.text.length / 3.8);
+          } else if (block.type === 'tool_use' || block.type === 'tool_result') {
+            tokens += 100; // Block overhead
+            tokens += Math.ceil(safeJSONStringify(block).length / 3.8);
           }
         }
       }
     }
   }
   
-  // 4 characters per token + 20% overhead for formatting/overhead
-  return Math.ceil((chars / 4) * 1.2) + 200;
+  return tokens;
 }
+
 
 /**
  * Get the estimated context limit for a model to prevent 400 errors
