@@ -1,14 +1,14 @@
 const DEFAULT_MAX_TOKENS = 4096;
 const DEFAULT_API_URL = 'https://integrate.api.nvidia.com/v1';
 const DEFAULT_OPUS_MODEL = 'deepseek-ai/deepseek-v3.2';
-const DEFAULT_SONNET_MODEL = 'minimaxai/minimax-m2.7';
+const DEFAULT_SONNET_MODEL = 'deepseek-ai/deepseek-v3.2'; // Replaced minimax because it's not responding
 const DEFAULT_HAIKU_MODEL = 'z-ai/glm-5.1';
-const DEFAULT_FALLBACK_MODEL = 'z-ai/glm-5.1';
-const DEFAULT_TOOL_MODEL = DEFAULT_SONNET_MODEL;
-const DEFAULT_MAX_UPSTREAM_RETRIES = 3;
+const DEFAULT_FALLBACK_MODEL = 'deepseek-ai/deepseek-v3.2';
+const DEFAULT_TOOL_MODEL = 'deepseek-ai/deepseek-v3.2'; // Ensures DeepSeek is used for tools
+const DEFAULT_MAX_UPSTREAM_RETRIES = 2; // Reduced from 3 to fail faster if dead
 const DEFAULT_RETRY_BASE_DELAY_MS = 200; // Fast recovery - 200ms instead of 1000ms
-const DEFAULT_UPSTREAM_TIMEOUT_MS = 60000; // Reduced to 60s - healthy NIMs respond faster
-const MAX_RETRY_DELAY_MS = 30000;
+const DEFAULT_UPSTREAM_TIMEOUT_MS = 15000; // Reduced from 60s to 15s to prevent hanging completely
+const MAX_RETRY_DELAY_MS = 15000; // Reduced from 30s to 15s
 // 429 (rate limit) and specific 4xx - skip retry for these unless handled specially
 // Only retry on server errors (5xx) and specific network errors
 const RETRYABLE_UPSTREAM_STATUS = new Set([408, 409, 425, 500, 502, 503, 504, 520, 522, 524]);
@@ -21,6 +21,7 @@ const TOOL_CAPABLE_MODELS = new Set([
   'z-ai/glm-4.7',
   'z-ai/glm-5.1',
   'deepseek-ai/deepseek-v3',
+  'deepseek-ai/deepseek-v3.2', // Added to prevent silent routing away from it
   'deepseek-ai/deepseek-r1',
 ]);
 
@@ -32,12 +33,14 @@ const ESTIMATED_MODEL_LIMITS = {
   'mistralai/mistral-large': 131072,
   'qwen/qwen2.5': 131072,
   'deepseek-ai/deepseek-v3': 65536,
+  'deepseek-ai/deepseek-v3.2': 65536,
   'z-ai/glm': 131072,
   'default': 32768
 };
 
 const RETIRED_OR_UNAVAILABLE_MODELS = new Set([
   'minimaxai/minimax-m2.1',
+  'minimaxai/minimax-m2.7', // Added because user said it's not responding
 ]);
 
 // Tool/MCP error patterns for detection
