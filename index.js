@@ -7,7 +7,7 @@ const DEFAULT_FALLBACK_MODEL = 'deepseek-ai/deepseek-v3.2';
 const DEFAULT_TOOL_MODEL = 'deepseek-ai/deepseek-v3.2'; // Ensures DeepSeek is used for tools
 const DEFAULT_MAX_UPSTREAM_RETRIES = 2; // Reduced from 3 to fail faster if dead
 const DEFAULT_RETRY_BASE_DELAY_MS = 300; // Slightly increased for better 429 handling
-const DEFAULT_UPSTREAM_TIMEOUT_MS = 30000; // Increased from 15s to 30s for better cold-start reliability
+const DEFAULT_UPSTREAM_TIMEOUT_MS = 60000; // Maintained increased timeout for reliability
 const MAX_RETRY_DELAY_MS = 15000; 
 // 429 (rate limit) and specific 4xx - now including 429 for limited retries
 const RETRYABLE_UPSTREAM_STATUS = new Set([408, 409, 425, 429, 500, 502, 503, 504, 520, 522, 524]);
