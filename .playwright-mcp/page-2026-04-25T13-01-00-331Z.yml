@@ -1,0 +1,531 @@
+- generic [active] [ref=e1]:
+  - button "Get a Quote" [ref=e2] [cursor=pointer]:
+    - img [ref=e3]
+  - generic [ref=e6]:
+    - img [ref=e8]
+    - generic [ref=e10]:
+      - paragraph [ref=e11]: We use cookies
+      - paragraph [ref=e12]:
+        - text: We use cookies to enhance your browsing experience and analyse our traffic. By clicking "Accept", you consent to our use of cookies.
+        - link "Read Skylumine's Cookie Policy" [ref=e13] [cursor=pointer]:
+          - /url: /cookie-policy
+          - text: Read our Cookie Policy
+    - generic [ref=e14]:
+      - button "Decline" [ref=e15] [cursor=pointer]
+      - button "Accept" [ref=e16] [cursor=pointer]
+      - button "Close cookie banner" [ref=e17] [cursor=pointer]:
+        - img [ref=e18]
+  - generic [ref=e21]:
+    - navigation [ref=e22]:
+      - link "Skylumine - Home" [ref=e24] [cursor=pointer]:
+        - /url: /
+        - img "Skylumine Logo" [ref=e25]
+      - generic [ref=e26]:
+        - button "Let's Talk" [ref=e27] [cursor=pointer]
+        - button "Open mobile menu" [ref=e28] [cursor=pointer]:
+          - img [ref=e29]
+    - main [ref=e30]:
+      - generic [ref=e32]:
+        - generic [ref=e33]: Future-Forward Digital Studio
+        - heading "BEYOND VISIONS" [level=1] [ref=e34]:
+          - text: BEYOND
+          - text: VISIONS
+        - paragraph [ref=e35]: Skylumine is a Google Ads-specialized growth company that scales revenue for businesses and brands through performance websites, data-driven SEO, and ROI-focused paid Ads.
+        - generic [ref=e36]:
+          - link "Explore our digital marketing and web development services" [ref=e37] [cursor=pointer]:
+            - /url: "#services"
+            - text: Explore Services
+          - link "Learn about our story and journey" [ref=e38] [cursor=pointer]:
+            - /url: "#about"
+            - text: Our Story
+      - region "About Skylumine" [ref=e39]:
+        - heading "About Skylumine" [level=2] [ref=e40]
+        - generic [ref=e43]:
+          - generic [ref=e44]:
+            - generic [ref=e45]: Who We Are
+            - heading "Connecting Ideas to Uniquely Crafted Experiences" [level=2] [ref=e46]:
+              - text: Connecting Ideas to
+              - text: Uniquely Crafted Experiences
+          - generic [ref=e47]:
+            - paragraph [ref=e48]: Skylumine is a premium digital production studio that brings your ideas to life through visually captivating designs and interactive experiences.
+            - paragraph [ref=e49]: As a Google Ads-specialized company in India, we combine performance websites, enterprise SEO, and ROI-focused paid Ads to help businesses and brands scale sustainably.
+            - link "Learn More About Our Journey" [ref=e51] [cursor=pointer]:
+              - /url: /about/
+              - generic [ref=e52]: Learn More About Our Journey
+      - region "Core Services" [ref=e54]:
+        - heading "Core Services" [level=2] [ref=e55]
+        - generic [ref=e58]:
+          - generic [ref=e60]:
+            - generic [ref=e61]: Technological Artistry
+            - heading "Digital Ecosystems Crafted for Impact" [level=2] [ref=e62]:
+              - text: Digital Ecosystems
+              - text: Crafted for Impact
+          - generic [ref=e63]:
+            - generic [ref=e64]:
+              - img "Web Systems" [ref=e66]
+              - generic [ref=e67]:
+                - generic [ref=e68]:
+                  - generic [ref=e69]: "01"
+                  - img [ref=e71]
+                - link "Read more about our Web Systems capabilities" [ref=e75] [cursor=pointer]:
+                  - /url: /services/website-development/
+                  - heading "Web Systems" [level=3] [ref=e76]
+                - paragraph [ref=e77]: Architecting immersive digital experiences with high-performance frameworks and optimized interfaces.
+                - generic [ref=e78]:
+                  - generic [ref=e79]: Next.js
+                  - generic [ref=e80]: React
+                  - generic [ref=e81]: Node.js
+                - generic [ref=e82]:
+                  - link "Website Development" [ref=e83] [cursor=pointer]:
+                    - /url: /services/website-development/
+                  - link "Full-Stack Solutions" [ref=e84] [cursor=pointer]:
+                    - /url: /services/website-development/
+                  - link "Web Design" [ref=e85] [cursor=pointer]:
+                    - /url: /services/web-design/
+                  - link "UI/UX Design" [ref=e86] [cursor=pointer]:
+                    - /url: /services/ui-ux-design/
+                  - link "Website Redesign" [ref=e87] [cursor=pointer]:
+                    - /url: /services/website-redesign/
+                  - link "Page Speed Optimization" [ref=e88] [cursor=pointer]:
+                    - /url: /services/page-speed-optimization/
+                  - link "Website Maintenance" [ref=e89] [cursor=pointer]:
+                    - /url: /services/website-maintenance/
+                  - link "Business Hosting" [ref=e90] [cursor=pointer]:
+                    - /url: /services/business-hosting/
+                - link "Explore our Web Systems services" [ref=e92] [cursor=pointer]:
+                  - /url: /services/website-development/
+                  - generic [ref=e94]: Discover the Flow
+            - generic [ref=e96]:
+              - img "Search Intelligence" [ref=e98]
+              - generic [ref=e99]:
+                - generic [ref=e100]:
+                  - generic [ref=e101]: "02"
+                  - img [ref=e103]
+                - link "Read more about our Search Intelligence capabilities" [ref=e106] [cursor=pointer]:
+                  - /url: /services/seo-services/
+                  - heading "Search Intelligence" [level=3] [ref=e107]
+                - paragraph [ref=e108]: Harnessing algorithmic precision to elevate your brand's authority and organic reach.
+                - generic [ref=e109]:
+                  - generic [ref=e110]: Data Audit
+                  - generic [ref=e111]: Semantics
+                  - generic [ref=e112]: Authority
+                - generic [ref=e113]:
+                  - link "SEO Services" [ref=e114] [cursor=pointer]:
+                    - /url: /services/seo-services/
+                  - link "SEO Audit" [ref=e115] [cursor=pointer]:
+                    - /url: /services/seo-audit/
+                  - link "Local SEO" [ref=e116] [cursor=pointer]:
+                    - /url: /services/local-seo/
+                  - link "Enterprise SEO" [ref=e117] [cursor=pointer]:
+                    - /url: /services/enterprise-seo/
+                  - link "E-Commerce SEO" [ref=e118] [cursor=pointer]:
+                    - /url: /services/ecommerce-seo/
+                - link "Explore our Search Intelligence services" [ref=e120] [cursor=pointer]:
+                  - /url: /services/seo-services/
+                  - generic [ref=e122]: Discover the Flow
+            - generic [ref=e124]:
+              - img "PPC Management" [ref=e126]
+              - generic [ref=e127]:
+                - generic [ref=e128]:
+                  - generic [ref=e129]: "03"
+                  - img [ref=e131]
+                - link "Read more about our PPC Management capabilities" [ref=e133] [cursor=pointer]:
+                  - /url: /services/ppc-management/
+                  - heading "PPC Management" [level=3] [ref=e134]
+                - paragraph [ref=e135]: Precision-targeted paid media campaigns engineered for exponential conversion and ROI.
+                - generic [ref=e136]:
+                  - generic [ref=e137]: Quantum Bidding
+                  - generic [ref=e138]: Retargeting
+                  - generic [ref=e139]: Analytics
+                - generic [ref=e140]:
+                  - link "PPC Management" [ref=e141] [cursor=pointer]:
+                    - /url: /services/ppc-management/
+                  - link "Google Ads" [ref=e142] [cursor=pointer]:
+                    - /url: /services/google-ads/
+                  - link "Facebook Ads" [ref=e143] [cursor=pointer]:
+                    - /url: /services/facebook-ads/
+                - link "Explore our PPC Management services" [ref=e145] [cursor=pointer]:
+                  - /url: /services/ppc-management/
+                  - generic [ref=e147]: Discover the Flow
+            - generic [ref=e149]:
+              - img "Social Synthesis" [ref=e151]
+              - generic [ref=e152]:
+                - generic [ref=e153]:
+                  - generic [ref=e154]: "04"
+                  - img [ref=e156]
+                - link "Read more about our Social Synthesis capabilities" [ref=e162] [cursor=pointer]:
+                  - /url: /services/social-media-marketing/
+                  - heading "Social Synthesis" [level=3] [ref=e163]
+                - paragraph [ref=e164]: Creating resonant brand narratives that thrive across the evolving social landscape.
+                - generic [ref=e165]:
+                  - generic [ref=e166]: Brand Voice
+                  - generic [ref=e167]: Viral Loops
+                  - generic [ref=e168]: Engagement
+                - generic [ref=e169]:
+                  - link "Social Media Marketing" [ref=e170] [cursor=pointer]:
+                    - /url: /services/social-media-marketing/
+                  - link "Social Media Optimization" [ref=e171] [cursor=pointer]:
+                    - /url: /services/social-media-optimization/
+                - link "Explore our Social Synthesis services" [ref=e173] [cursor=pointer]:
+                  - /url: /services/social-media-marketing/
+                  - generic [ref=e175]: Discover the Flow
+            - generic [ref=e177]:
+              - img "Narrative Design" [ref=e179]
+              - generic [ref=e180]:
+                - generic [ref=e181]:
+                  - generic [ref=e182]: "05"
+                  - img [ref=e184]
+                - link "Read more about our Narrative Design capabilities" [ref=e189] [cursor=pointer]:
+                  - /url: /services/content-writing/
+                  - heading "Narrative Design" [level=3] [ref=e190]
+                - paragraph [ref=e191]: Strategic content that bridges the gap between technical complexity and human connection.
+                - generic [ref=e192]:
+                  - generic [ref=e193]: Storytelling
+                  - generic [ref=e194]: SEO Copy
+                  - generic [ref=e195]: Strategy
+                - link "Content Writing" [ref=e197] [cursor=pointer]:
+                  - /url: /services/content-writing/
+                - link "Explore our Narrative Design services" [ref=e199] [cursor=pointer]:
+                  - /url: /services/content-writing/
+                  - generic [ref=e201]: Discover the Flow
+            - generic [ref=e203]:
+              - img "Infinite Commerce" [ref=e205]
+              - generic [ref=e206]:
+                - generic [ref=e207]:
+                  - generic [ref=e208]: "06"
+                  - img [ref=e210]
+                - link "Read more about our Infinite Commerce capabilities" [ref=e213] [cursor=pointer]:
+                  - /url: /services/e-commerce-development/
+                  - heading "Infinite Commerce" [level=3] [ref=e214]
+                - paragraph [ref=e215]: Fluid, frictionless shopping experiences that redefine the boundaries of digital retail.
+                - generic [ref=e216]:
+                  - generic [ref=e217]: Headless
+                  - generic [ref=e218]: UX Flow
+                  - generic [ref=e219]: Scale
+                - generic [ref=e220]:
+                  - link "E-Commerce Development" [ref=e221] [cursor=pointer]:
+                    - /url: /services/e-commerce-development/
+                  - link "WooCommerce" [ref=e222] [cursor=pointer]:
+                    - /url: /services/woocommerce-development/
+                  - link "WordPress Development" [ref=e223] [cursor=pointer]:
+                    - /url: /services/wordpress-development/
+                  - link "WordPress Themes" [ref=e224] [cursor=pointer]:
+                    - /url: /services/wordpress-theme-development/
+                  - link "WordPress Plugins" [ref=e225] [cursor=pointer]:
+                    - /url: /services/wordpress-plugin-development/
+                  - link "WordPress Migration" [ref=e226] [cursor=pointer]:
+                    - /url: /services/wordpress-migration/
+                  - link "Theme Integration" [ref=e227] [cursor=pointer]:
+                    - /url: /services/wordpress-theme-integration/
+                - link "Explore our Infinite Commerce services" [ref=e229] [cursor=pointer]:
+                  - /url: /services/e-commerce-development/
+                  - generic [ref=e231]: Discover the Flow
+            - generic [ref=e233]:
+              - img "AI Automation" [ref=e235]
+              - generic [ref=e236]:
+                - generic [ref=e237]:
+                  - generic [ref=e238]: "07"
+                  - img [ref=e240]
+                - link "Read more about our AI Automation capabilities" [ref=e242] [cursor=pointer]:
+                  - /url: /services/ai-automation/
+                  - heading "AI Automation" [level=3] [ref=e243]
+                - paragraph [ref=e244]: Intelligent agents and autonomous workflows that transform manual processes into seamless, self-optimizing operations.
+                - generic [ref=e245]:
+                  - generic [ref=e246]: Agentic AI
+                  - generic [ref=e247]: RPA
+                  - generic [ref=e248]: Workflow Intelligence
+                - generic [ref=e249]:
+                  - link "Chatbot & Conversational AI" [ref=e250] [cursor=pointer]:
+                    - /url: /services/ai-automation/
+                  - link "Document Processing Agents" [ref=e251] [cursor=pointer]:
+                    - /url: /services/ai-automation/
+                  - link "Workflow Automation Platforms" [ref=e252] [cursor=pointer]:
+                    - /url: /services/ai-automation/
+                  - link "Robotic Process Automation" [ref=e253] [cursor=pointer]:
+                    - /url: /services/ai-automation/
+                  - link "AI Agent Platforms" [ref=e254] [cursor=pointer]:
+                    - /url: /services/ai-automation/
+                  - link "Marketing & Sales Automation" [ref=e255] [cursor=pointer]:
+                    - /url: /services/ai-automation/
+                - link "Explore our AI Automation services" [ref=e257] [cursor=pointer]:
+                  - /url: /services/ai-automation/
+                  - generic [ref=e259]: Discover the Flow
+      - region "Client Testimonials" [ref=e261]:
+        - heading "Client Testimonials" [level=2] [ref=e262]
+        - generic [ref=e265]:
+          - generic [ref=e266]:
+            - generic [ref=e267]: Client Stories
+            - heading "What Our Clients Say" [level=2] [ref=e268]:
+              - text: What Our
+              - text: Clients Say
+          - generic [ref=e269]:
+            - generic [ref=e270]:
+              - img [ref=e271]
+              - paragraph [ref=e274]: "\"Skylumine completely transformed our online presence. Their team delivered a stunning website that increased our leads in just three months.\""
+              - generic [ref=e275]:
+                - generic [ref=e276]:
+                  - img [ref=e277]
+                  - img [ref=e279]
+                  - img [ref=e281]
+                  - img [ref=e283]
+                  - img [ref=e285]
+                - generic [ref=e287]: Pranjal
+                - generic [ref=e288]: CEO, IronProbe
+            - generic [ref=e289]:
+              - img [ref=e290]
+              - paragraph [ref=e293]: "\"The e-commerce store they built for us is flawless. Our sales doubled within the first quarter. Their attention to detail and commitment to excellence is unmatched.\""
+              - generic [ref=e294]:
+                - generic [ref=e295]:
+                  - img [ref=e296]
+                  - img [ref=e298]
+                  - img [ref=e300]
+                  - img [ref=e302]
+                  - img [ref=e304]
+                - generic [ref=e306]: Neha Kapoor
+                - generic [ref=e307]: Founder, StyleCraft Boutique
+            - generic [ref=e308]:
+              - img [ref=e309]
+              - paragraph [ref=e312]: "\"Their SEO and PPC strategies took us from page 5 to page 1 on Google. The ROI on their digital marketing services has been phenomenal.\""
+              - generic [ref=e313]:
+                - generic [ref=e314]:
+                  - img [ref=e315]
+                  - img [ref=e317]
+                  - img [ref=e319]
+                  - img [ref=e321]
+                  - img [ref=e323]
+                - generic [ref=e325]: Amit Patel
+                - generic [ref=e326]: Marketing Director, GreenLeaf Organics
+            - generic [ref=e327]:
+              - img [ref=e328]
+              - paragraph [ref=e331]: "\"Working with Skylumine was a game-changer. Their WordPress development team built a complex platform that handles thousands of users daily without a hitch.\""
+              - generic [ref=e332]:
+                - generic [ref=e333]:
+                  - img [ref=e334]
+                  - img [ref=e336]
+                  - img [ref=e338]
+                  - img [ref=e340]
+                  - img [ref=e342]
+                - generic [ref=e344]: Sarah Johnson
+                - generic [ref=e345]: COO, NextGen Fintech
+            - generic [ref=e346]:
+              - img [ref=e347]
+              - paragraph [ref=e350]: "\"They redesigned our outdated website into a modern, professional platform. Our client inquiries increased by 200% and the site loads incredibly fast.\""
+              - generic [ref=e351]:
+                - generic [ref=e352]:
+                  - img [ref=e353]
+                  - img [ref=e355]
+                  - img [ref=e357]
+                  - img [ref=e359]
+                  - img [ref=e361]
+                - generic [ref=e363]: Vikram Singh
+                - generic [ref=e364]: Owner, Singh & Associates Law Firm
+            - generic [ref=e365]:
+              - img [ref=e366]
+              - paragraph [ref=e369]: "\"Their social media management has grown our following by 500% organically. The content strategy they implemented truly resonates with our audience.\""
+              - generic [ref=e370]:
+                - generic [ref=e371]:
+                  - img [ref=e372]
+                  - img [ref=e374]
+                  - img [ref=e376]
+                  - img [ref=e378]
+                  - img [ref=e380]
+                - generic [ref=e382]: Ananya Reddy
+                - generic [ref=e383]: Head of Digital, CloudNine Media
+      - region "Performance Results" [ref=e384]:
+        - heading "Performance Results" [level=2] [ref=e385]
+        - generic [ref=e388]:
+          - generic [ref=e389]:
+            - generic [ref=e390]: 30+
+            - generic [ref=e391]: Happy Clients
+          - generic [ref=e392]:
+            - generic [ref=e393]: 260+
+            - generic [ref=e394]: Projects Completed
+          - generic [ref=e395]:
+            - generic [ref=e396]: 8+
+            - generic [ref=e397]: Experts
+          - generic [ref=e398]:
+            - generic [ref=e399]: 5+
+            - generic [ref=e400]: Years Excellence
+      - region "Contact Skylumine" [ref=e401]:
+        - heading "Contact Skylumine" [level=2] [ref=e402]
+        - generic [ref=e405]:
+          - generic [ref=e406]:
+            - generic [ref=e407]: Get in Touch
+            - heading "Let's Build the Future Together" [level=2] [ref=e408]:
+              - text: Let's Build the
+              - text: Future Together
+            - generic [ref=e409]:
+              - generic [ref=e410]:
+                - img [ref=e412]
+                - generic [ref=e415]:
+                  - generic [ref=e416]: Email
+                  - link "team.skylumine@gmail.com" [ref=e417] [cursor=pointer]:
+                    - /url: mailto:team.skylumine@gmail.com
+              - generic [ref=e418]:
+                - img [ref=e420]
+                - generic [ref=e422]:
+                  - generic [ref=e423]: Phone
+                  - link "+91 9351988380" [ref=e424] [cursor=pointer]:
+                    - /url: tel:+919351988380
+              - generic [ref=e425]:
+                - img [ref=e427]
+                - generic [ref=e430]:
+                  - generic [ref=e431]: Address
+                  - paragraph [ref=e432]: 54 A, 80 Feet Rd, Aayodhya Nagar, Jaipur, RJ 302015
+          - generic [ref=e434]:
+            - generic [ref=e435]:
+              - generic [ref=e436]:
+                - generic [ref=e437]: Your Name *
+                - textbox "Your Name *" [ref=e438]
+              - generic [ref=e439]:
+                - generic [ref=e440]: Email Address *
+                - textbox "Email Address *" [ref=e441]
+            - generic [ref=e442]:
+              - generic [ref=e443]:
+                - generic [ref=e444]: Phone Number
+                - textbox "Phone Number" [ref=e445]
+              - generic [ref=e446]:
+                - generic [ref=e447]: Company Name
+                - textbox "Company Name" [ref=e448]
+            - generic [ref=e449]:
+              - generic [ref=e450]:
+                - generic [ref=e451]: Service Interested In
+                - combobox "Service Interested In" [ref=e452]:
+                  - option "Select a Service" [selected]
+                  - option "Web Design & Development"
+                  - option "Full Stack Development"
+                  - option "SEO Services"
+                  - option "PPC Management"
+                  - option "Social Media Marketing"
+                  - option "WordPress Development"
+                  - option "WooCommerce Development"
+                  - option "E-Commerce Development"
+                  - option "UI/UX Design"
+                  - option "Content Writing"
+                  - option "Website Redesign"
+                  - option "Page Speed Optimization"
+                  - option "Website Maintenance"
+                  - option "Business Hosting"
+                  - option "Other"
+              - generic [ref=e453]:
+                - generic [ref=e454]: Budget Range
+                - combobox "Budget Range" [ref=e455]:
+                  - option "Select Budget" [selected]
+                  - option "Under $1,000"
+                  - option "$1,000 - $5,000"
+                  - option "$5,000 - $10,000"
+                  - option "$10,000 - $25,000"
+                  - option "$25,000+"
+            - generic [ref=e456]:
+              - generic [ref=e457]: Industry
+              - combobox "Industry" [ref=e458]:
+                - option "Select Industry" [selected]
+                - option "E-Commerce"
+                - option "Healthcare"
+                - option "Education"
+                - option "Finance"
+                - option "Real Estate"
+                - option "Technology"
+                - option "Hospitality"
+                - option "Other"
+            - generic [ref=e459]:
+              - generic [ref=e460]: Message *
+              - textbox "Message *" [ref=e461]
+            - button "Send Message" [ref=e462] [cursor=pointer]:
+              - text: Send Message
+              - img [ref=e463]
+    - contentinfo [ref=e466]:
+      - generic [ref=e467]:
+        - generic [ref=e468]:
+          - img "Skylumine Logo" [ref=e470]
+          - paragraph [ref=e471]: Skylumine is a future-forward digital production studio specializing in premium web experiences and strategic digital marketing.
+          - generic [ref=e472]:
+            - link "Instagram" [ref=e473] [cursor=pointer]:
+              - /url: https://www.instagram.com/team.skylumine/
+              - img [ref=e474]
+            - link "Twitter" [ref=e477] [cursor=pointer]:
+              - /url: https://x.com/Teamskylumine
+              - img [ref=e478]
+            - link "LinkedIn" [ref=e480] [cursor=pointer]:
+              - /url: https://www.linkedin.com/company/skylumine/
+              - img [ref=e481]
+            - link "Facebook" [ref=e485] [cursor=pointer]:
+              - /url: https://www.facebook.com/skylumine
+              - img [ref=e486]
+        - generic [ref=e488]:
+          - heading "Quick Links" [level=3] [ref=e489]
+          - list [ref=e490]:
+            - listitem [ref=e491]:
+              - link "Home" [ref=e492] [cursor=pointer]:
+                - /url: /
+            - listitem [ref=e493]:
+              - link "About" [ref=e494] [cursor=pointer]:
+                - /url: /about/
+            - listitem [ref=e495]:
+              - link "Services" [ref=e496] [cursor=pointer]:
+                - /url: /services/
+            - listitem [ref=e497]:
+              - link "Blog" [ref=e498] [cursor=pointer]:
+                - /url: /blog/
+            - listitem [ref=e499]:
+              - link "Contact" [ref=e500] [cursor=pointer]:
+                - /url: /contact/
+        - generic [ref=e501]:
+          - heading "Our Services" [level=3] [ref=e502]
+          - list [ref=e503]:
+            - listitem [ref=e504]:
+              - link "Website Development" [ref=e505] [cursor=pointer]:
+                - /url: /services/website-development/
+            - listitem [ref=e506]:
+              - link "Web Design" [ref=e507] [cursor=pointer]:
+                - /url: /services/web-design/
+            - listitem [ref=e508]:
+              - link "UI/UX Design" [ref=e509] [cursor=pointer]:
+                - /url: /services/ui-ux-design/
+            - listitem [ref=e510]:
+              - link "SEO Services" [ref=e511] [cursor=pointer]:
+                - /url: /services/seo-services/
+            - listitem [ref=e512]:
+              - link "PPC Management" [ref=e513] [cursor=pointer]:
+                - /url: /services/ppc-management/
+            - listitem [ref=e514]:
+              - link "Social Media Marketing" [ref=e515] [cursor=pointer]:
+                - /url: /services/social-media-marketing/
+            - listitem [ref=e516]:
+              - link "Content Writing" [ref=e517] [cursor=pointer]:
+                - /url: /services/content-writing/
+            - listitem [ref=e518]:
+              - link "E-Commerce Development" [ref=e519] [cursor=pointer]:
+                - /url: /services/e-commerce-development/
+            - listitem [ref=e520]:
+              - link "WordPress Development" [ref=e521] [cursor=pointer]:
+                - /url: /services/wordpress-development/
+            - listitem [ref=e522]:
+              - link "AI Automation" [ref=e523] [cursor=pointer]:
+                - /url: /services/ai-automation/
+        - generic [ref=e524]:
+          - heading "Contact Info" [level=3] [ref=e525]
+          - generic [ref=e526]:
+            - generic [ref=e527]:
+              - img [ref=e528]
+              - link "team.skylumine@gmail.com" [ref=e531] [cursor=pointer]:
+                - /url: mailto:team.skylumine@gmail.com
+            - generic [ref=e532]:
+              - img [ref=e533]
+              - link "+91 9351988380" [ref=e535] [cursor=pointer]:
+                - /url: tel:+919351988380
+            - generic [ref=e536]:
+              - img [ref=e537]
+              - generic [ref=e540]:
+                - text: 54 A, 80 Feet Rd, Aayodhya Nagar,
+                - text: Jaipur, RJ 302015, India
+      - generic [ref=e541]:
+        - generic [ref=e542]: © 2026 SKYLUMINE. All rights reserved.
+        - generic [ref=e543]:
+          - link "Privacy Policy" [ref=e544] [cursor=pointer]:
+            - /url: /privacy-policy/
+          - link "Terms of Service" [ref=e545] [cursor=pointer]:
+            - /url: /terms-of-service/
+          - link "Cookie Policy" [ref=e546] [cursor=pointer]:
+            - /url: /cookie-policy/
+  - alert [ref=e547]
