@@ -151,20 +151,22 @@ Edit `~/.claude/settings.json`:
   "env": {
     "ANTHROPIC_AUTH_TOKEN": "test",
     "ANTHROPIC_API_KEY": "test",
-    "ANTHROPIC_BASE_URL": "https://nvidia-anthropic-proxy.workers.dev",
-    "ANTHROPIC_MODEL": "minimaxai/minimax-m2.7",
-    "ANTHROPIC_DEFAULT_OPUS_MODEL": "deepseek-ai/deepseek-v3.2",
-    "ANTHROPIC_DEFAULT_SONNET_MODEL": "nvidia/nemotron-3-super-120b-a12b",
-    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "z-ai/glm-5.1",
-    "CLAUDE_CODE_SUBAGENT_MODEL": "minimaxai/minimax-m2.7",
-    "ENABLE_EXPERIMENTAL_MCP_CLI": "true"
+    "ANTHROPIC_BASE_URL": "https://nvidia-anthropic-proxy.yourwrokerlinkpastehere.workers.dev/",
+    "ANTHROPIC_MODEL": "moonshotai/kimi-k2-instruct-0905",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "nvidia/nemotron-3-super-120b-a12b",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "qwen/qwen3-next-80b-a3b-instruct",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "z-ai/glm-4.7",
+    "CLAUDE_CODE_SUBAGENT_MODEL": "qwen/qwen3-next-80b-a3b-instruct",
+    "ENABLE_EXPERIMENTAL_MCP_CLI": "true",
+    "ENABLE_CLAUDE_CODE": "true",
+    "CLAUDE_CODE_USE_SEQUENTIAL_SUBAGENTS": "true"
   },
   "permissions": {
     "allow": [
       "*"
     ]
   },
-  "model": "haiku",
+  "model": "sonnet",
   "enabledPlugins": {
     "fullstack-engineer@claude-code-skills": true,
     "claude-mem@thedotmack": true,
@@ -190,18 +192,13 @@ Edit `~/.claude/settings.json`:
   "skipDangerousModePermissionPrompt": true,
   "version": "1.0",
   "defaults": {
-    "model": "minimaxai/minimax-m2.7"
+    "model": "google/gemma-4-31b-it"
   },
   "customModels": [
     {
       "id": "meta/llama-3.3-70b-instruct",
       "name": "Llama 3.3 70B",
       "provider": "Meta"
-    },
-    {
-      "id": "deepseek-ai/deepseek-v3",
-      "name": "DeepSeek V3",
-      "provider": "DeepSeek"
     },
     {
       "id": "nvidia/llama-3.1-nemotron-70b-instruct",
@@ -224,9 +221,9 @@ Edit `~/.claude/settings.json`:
       "provider": "NVIDIA"
     },
     {
-      "id": "deepseek-ai/deepseek-r1",
-      "name": "DeepSeek R1",
-      "provider": "DeepSeek"
+      "id": "google/gemma-4-31b-it",
+      "name": "Gemma 4 31B",
+      "provider": "Google"
     }
   ],
   "mcpServers": {
@@ -261,8 +258,10 @@ Edit `~/.claude/settings.json`:
     "~/.claude/plugins/*/skills"
   ],
   "debug": false,
-  "logLevel": "info"
+  "logLevel": "info",
+  "effortLevel": "max"
 }
+
 ```
 
 ### 5. Start Using
