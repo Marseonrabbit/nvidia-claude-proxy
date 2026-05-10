@@ -1,0 +1,171 @@
+- generic [ref=e2]:
+  - region
+  - generic [ref=e3]:
+    - link "Skip to content" [ref=e4] [cursor=pointer]:
+      - /url: "#start-of-content"
+    - banner [ref=e6]:
+      - heading "Navigation Menu" [level=2] [ref=e7]
+      - generic [ref=e9]:
+        - button "Toggle navigation" [ref=e11] [cursor=pointer]
+        - link "Homepage" [ref=e17] [cursor=pointer]:
+          - /url: /
+          - img [ref=e18]
+        - generic [ref=e20]:
+          - link "Sign in" [ref=e21] [cursor=pointer]:
+            - /url: /login?return_to=https%3A%2F%2Fgithub.com%2FMarseonrabbit
+          - button "Appearance settings" [ref=e24] [cursor=pointer]:
+            - img
+  - main [ref=e27]:
+    - generic [ref=e30]:
+      - generic [ref=e31]:
+        - generic:
+          - generic:
+            - generic:
+              - img "@Marseonrabbit"
+            - generic:
+              - strong: Marseonrabbit
+              - generic:
+                - generic:
+                  - link "Follow":
+                    - /url: /login?return_to=https%3A%2F%2Fgithub.com%2FMarseonrabbit
+      - generic [ref=e33]:
+        - navigation "User profile" [ref=e34]:
+          - link "Overview" [ref=e35] [cursor=pointer]:
+            - /url: /Marseonrabbit
+            - img [ref=e36]
+            - text: Overview
+          - link "Repositories 10" [ref=e38] [cursor=pointer]:
+            - /url: /Marseonrabbit?tab=repositories
+            - img [ref=e39]
+            - text: Repositories
+            - generic "10" [ref=e41]
+          - link "Projects" [ref=e42] [cursor=pointer]:
+            - /url: /Marseonrabbit?tab=projects
+            - img [ref=e43]
+            - text: Projects
+          - link "Packages" [ref=e45] [cursor=pointer]:
+            - /url: /Marseonrabbit?tab=packages
+            - img [ref=e46]
+            - text: Packages
+        - group [ref=e50]:
+          - button "More" [ref=e51] [cursor=pointer]:
+            - generic [ref=e52]:
+              - img [ref=e53]
+              - generic [ref=e55]: More
+    - generic [ref=e57]:
+      - generic [ref=e59]:
+        - generic:
+          - generic:
+            - generic:
+              - img "@Marseonrabbit"
+            - generic:
+              - generic:
+                - strong: Marseonrabbit
+            - generic:
+              - generic:
+                - generic:
+                  - link "Follow":
+                    - /url: /login?return_to=https%3A%2F%2Fgithub.com%2FMarseonrabbit
+        - generic [ref=e60]:
+          - generic [ref=e61]:
+            - link "View Marseonrabbit's full-sized avatar" [ref=e63] [cursor=pointer]:
+              - /url: https://avatars.githubusercontent.com/u/139709598?v=4
+              - img "View Marseonrabbit's full-sized avatar" [ref=e64]
+            - heading "Vikashpoonia Marseonrabbit" [level=1] [ref=e66]:
+              - generic [ref=e67]: Vikashpoonia
+              - generic [ref=e68]: Marseonrabbit
+          - generic [ref=e69]:
+            - link "Follow" [ref=e76] [cursor=pointer]:
+              - /url: /login?return_to=https%3A%2F%2Fgithub.com%2FMarseonrabbit
+            - generic [ref=e77]:
+              - generic [ref=e79]: IGNOU BCA student
+              - list [ref=e80]:
+                - 'listitem "Organization: @safeaeon" [ref=e81]':
+                  - img [ref=e82]
+                  - link "@safeaeon" [ref=e86] [cursor=pointer]:
+                    - /url: https://github.com/safeaeon
+          - button "Block or report user" [ref=e88] [cursor=pointer]:
+            - generic [ref=e90]: Block or report user
+      - generic [ref=e93]:
+        - generic [ref=e95]:
+          - generic [ref=e97]:
+            - link "Marseonrabbit" [ref=e98] [cursor=pointer]:
+              - /url: /Marseonrabbit/Marseonrabbit
+            - generic [ref=e99]: /
+            - text: README.md
+          - article [ref=e100]:
+            - list [ref=e101]:
+              - listitem [ref=e102]: 👋 Hi, I’m @Marseonrabbit
+              - listitem [ref=e103]: 👀 I’m interested in cybersecurity
+              - listitem [ref=e104]: 🌱 I’m currently learning Ethical hacking
+        - generic [ref=e106]:
+          - heading "Pinned Loading" [level=2] [ref=e107]:
+            - text: Pinned
+            - generic [ref=e108]: Loading
+            - status
+          - list [ref=e109]:
+            - listitem [ref=e110]:
+              - generic [ref=e112]:
+                - generic [ref=e114]:
+                  - img [ref=e115]
+                  - link "nvidia-claude-proxy" [ref=e118] [cursor=pointer]:
+                    - /url: /Marseonrabbit/nvidia-claude-proxy
+                  - text: Public
+                - paragraph [ref=e119]: A claude code proxy using the Cloudflare Worker proxy that enables OpenAI-compatible APIs (like NVIDIA NIM) to work with Anthropic API clients such as Claude Code.
+                - paragraph [ref=e120]:
+                  - generic [ref=e121]: JavaScript
+                  - link "stars 2" [ref=e123] [cursor=pointer]:
+                    - /url: /Marseonrabbit/nvidia-claude-proxy/stargazers
+                    - img "stars" [ref=e124]
+                    - text: "2"
+            - listitem [ref=e126]:
+              - generic [ref=e128]:
+                - generic [ref=e130]:
+                  - img [ref=e131]
+                  - link "who.vikash" [ref=e134] [cursor=pointer]:
+                    - /url: /Marseonrabbit/who.vikash
+                  - text: Public
+                - paragraph [ref=e135]
+                - paragraph [ref=e136]:
+                  - generic [ref=e137]: TypeScript
+                  - link "star 1" [ref=e139] [cursor=pointer]:
+                    - /url: /Marseonrabbit/who.vikash/stargazers
+                    - img "star" [ref=e140]
+                    - text: "1"
+        - img "Loading" [ref=e146]
+  - contentinfo [ref=e149]:
+    - heading "Footer" [level=2] [ref=e150]
+    - generic [ref=e151]:
+      - generic [ref=e152]:
+        - link "GitHub Homepage" [ref=e153] [cursor=pointer]:
+          - /url: https://github.com
+          - img [ref=e154]
+        - generic [ref=e156]: © 2026 GitHub, Inc.
+      - navigation "Footer" [ref=e157]:
+        - heading "Footer navigation" [level=3] [ref=e158]
+        - list "Footer navigation" [ref=e159]:
+          - listitem [ref=e160]:
+            - link "Terms" [ref=e161] [cursor=pointer]:
+              - /url: https://docs.github.com/site-policy/github-terms/github-terms-of-service
+          - listitem [ref=e162]:
+            - link "Privacy" [ref=e163] [cursor=pointer]:
+              - /url: https://docs.github.com/site-policy/privacy-policies/github-privacy-statement
+          - listitem [ref=e164]:
+            - link "Security" [ref=e165] [cursor=pointer]:
+              - /url: https://github.com/security
+          - listitem [ref=e166]:
+            - link "Status" [ref=e167] [cursor=pointer]:
+              - /url: https://www.githubstatus.com/
+          - listitem [ref=e168]:
+            - link "Community" [ref=e169] [cursor=pointer]:
+              - /url: https://github.community/
+          - listitem [ref=e170]:
+            - link "Docs" [ref=e171] [cursor=pointer]:
+              - /url: https://docs.github.com/
+          - listitem [ref=e172]:
+            - link "Contact" [ref=e173] [cursor=pointer]:
+              - /url: https://support.github.com?tags=dotcom-footer
+          - listitem [ref=e174]:
+            - button "Manage cookies" [ref=e176] [cursor=pointer]
+          - listitem [ref=e177]:
+            - button "Do not share my personal information" [ref=e179] [cursor=pointer]

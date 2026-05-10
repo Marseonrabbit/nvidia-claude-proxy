@@ -18,13 +18,23 @@ const TOOL_CAPABLE_MODELS = new Set([
   'moonshotai/kimi-k2.5',
   'moonshotai/kimi-k2-instruct-0905',
   'minimaxai/minimax-m2.7',
-  'minimax/minimax-01', // Added current NVIDIA Minimax model
+  'minimax/minimax-01',
   'qwen/qwen3-next-80b-a3b-instruct',
   'nvidia/nemotron-3-super-120b-a12b',
-  'qwen/qwen3-next-80b-a3b-instruct',
   'z-ai/glm-4.7',
   'deepseek-ai/deepseek-v3',
   'deepseek-ai/deepseek-r1',
+  'google/gemma-2-27b-it',
+  'google/gemma-2-9b-it',
+  'meta/llama-3.1-405b-instruct',
+  'meta/llama-3.1-70b-instruct',
+  'meta/llama-3.1-8b-instruct',
+  'meta/llama-3.2-1b-instruct',
+  'meta/llama-3.2-3b-instruct',
+  'meta/llama-3.3-70b-instruct',
+  'mistralai/mistral-large-2-instruct',
+  'mistralai/mixtral-8x22b-instruct-v0.1',
+  'qwen/qwen2.5-72b-instruct',
 ]);
 
 
@@ -66,6 +76,20 @@ const TOOL_ERROR_PATTERNS = [
   /.*context.*limit.*reached.*/i,
   /.*too.*many.*tokens.*/i,
 ];
+
+const CLAUDE_MD_CONTENT = `
+# CLAUDE.md — Agentic Coding Assistant Instructions
+
+You are an advanced AI coding assistant operating in agentic mode. You MUST follow these rules strictly to maintain the agentic workflow loop without breaking.
+
+## Core Agentic Flow Rules
+1. ALWAYS use tools when available. If tools are provided in the request, you MUST use them to accomplish tasks. NEVER describe what you would do — actually DO it by calling the appropriate tool.
+2. NEVER end your turn prematurely. If you have been given a task and tools are available, you must continue calling tools until the task is fully complete. Do NOT stop with a summary of what needs to be done.
+3. Tool call format is critical. When calling tools: Always provide valid JSON for tool arguments; Always include all required parameters; Never truncate or abbreviate tool arguments; Never wrap tool calls in markdown code blocks — use the actual tool calling mechanism.
+4. After receiving tool results, continue working. When you receive a tool result: Analyze the result; Determine if more actions are needed; Call the next tool if the task isn't complete; Only provide a final text response when ALL work is done.
+5. File operations must be precise: Read files before editing them; Use exact content matches when replacing text; Verify changes after making them; Never guess file contents — always read first.
+6. Error handling: If a tool call fails: Analyze the error message; Retry with corrected parameters; Try an alternative approach if retry fails; Only report failure after exhausting all options.
+`;
 
 /**
  * Enhanced NVIDIA NIM Anthropic API Proxy
@@ -650,11 +674,15 @@ function convertAnthropicToOpenAI(anthropicRequest, resolvedModel, maxTokens) {
   const toolState = createToolState();
 
   // Handle system prompt (can be string or array of blocks)
-  if (anthropicRequest.system) {
-    const systemText = extractSystemText(anthropicRequest.system);
-    if (systemText) {
-      messages.push({ role: 'system', content: systemText });
-    }
+  let systemText = extractSystemText(anthropicRequest.system);
+  
+  // Inject CLAUDE.md content for agentic flow if not already present
+  if (!systemText.includes('Agentic Coding Assistant Instructions')) {
+    systemText = CLAUDE_MD_CONTENT + "\n\n" + systemText;
+  }
+  
+  if (systemText.trim()) {
+    messages.push({ role: 'system', content: systemText.trim() });
   }
 
   // Process each message in the conversation
@@ -1604,7 +1632,7 @@ async function handleNonStreamResponse(nvidiaResponse, model, requestId) {
       content.push({ type: 'text', text: message.content });
     }
 
-    // Add tool uses with error handling
+    // Add tool uses with error handling and text-based tool call detection
     if (message.tool_calls && message.tool_calls.length > 0) {
       logRequest(requestId, 'RESPONSE', 'tool_calls', { count: message.tool_calls.length });
       for (const toolCall of message.tool_calls) {
@@ -1623,6 +1651,13 @@ async function handleNonStreamResponse(nvidiaResponse, model, requestId) {
             text: `[Tool error: Failed to parse arguments for ${toolName}]`,
           });
         }
+      }
+    } else if (message.content && (message.content.includes('tool_use') || message.content.includes('"name":'))) {
+      // Repair text-based tool calls for models that break flow
+      const detectedTools = tryExtractToolsFromText(message.content);
+      if (detectedTools.length > 0) {
+        logRequest(requestId, 'REPAIR', 'text_tool_calls', { count: detectedTools.length });
+        content.push(...detectedTools);
       }
     }
 
@@ -2011,4 +2046,56 @@ function getModelContextLimit(model) {
   }
 
   return ESTIMATED_MODEL_LIMITS.default;
+}
+
+/**
+ * Attempt to extract tool calls from raw text when models fail to use the API correctly
+ */
+function tryExtractToolsFromText(text) {
+  const tools = [];
+  try {
+    // 1. Look for tool calls inside markdown code blocks (common model failure mode)
+    const codeBlockRegex = /```(?:json|tool_use)?\s*([\s\S]*?)```/g;
+    let blockMatch;
+    while ((blockMatch = codeBlockRegex.exec(text)) !== null) {
+      const content = blockMatch[1].trim();
+      try {
+        const parsed = JSON.parse(content);
+        // Handle both single tool and array of tools
+        const candidates = Array.isArray(parsed) ? parsed : [parsed];
+        for (const cand of candidates) {
+          if (cand.name && cand.input) {
+            tools.push({
+              type: 'tool_use',
+              id: `call_repaired_${Date.now()}_${tools.length}`,
+              name: cand.name,
+              input: cand.input
+            });
+          }
+        }
+      } catch (e) { /* ignore code blocks that aren't valid JSON */ }
+    }
+
+    // 2. Look for raw JSON objects if no tools found in code blocks
+    if (tools.length === 0) {
+      const jsonRegex = /\{(?:[^{}]|\{[^{}]*\})*\}/g; // Simple one-level nesting support
+      let match;
+      while ((match = jsonRegex.exec(text)) !== null) {
+        try {
+          const parsed = JSON.parse(match[0]);
+          if (parsed.name && parsed.input) {
+            tools.push({
+              type: 'tool_use',
+              id: `call_repaired_${Date.now()}_${tools.length}`,
+              name: parsed.name,
+              input: parsed.input
+            });
+          }
+        } catch (e) { /* ignore */ }
+      }
+    }
+  } catch (err) {
+    console.error('Error in tryExtractToolsFromText:', err);
+  }
+  return tools;
 }

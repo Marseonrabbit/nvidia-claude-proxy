@@ -52,4 +52,4 @@ const TOOL_ERROR_PATTERNS = [
   /permission.*denied.*tool/i,
   /tool.*access.*forbidden/i,
 ];
-EOF 2>&1
+]);
