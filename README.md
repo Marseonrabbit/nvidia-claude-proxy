@@ -155,7 +155,7 @@ Edit `~/.claude/settings.json`:
     "ANTHROPIC_MODEL": "moonshotai/kimi-k2-instruct-0905",
     "ANTHROPIC_DEFAULT_OPUS_MODEL": "nvidia/nemotron-3-super-120b-a12b",
     "ANTHROPIC_DEFAULT_SONNET_MODEL": "qwen/qwen3-next-80b-a3b-instruct",
-    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "z-ai/glm-4.7",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "moonshotai/kimi-k2.6",
     "CLAUDE_CODE_SUBAGENT_MODEL": "qwen/qwen3-next-80b-a3b-instruct",
     "ENABLE_EXPERIMENTAL_MCP_CLI": "true",
     "ENABLE_CLAUDE_CODE": "true",
@@ -273,7 +273,7 @@ claude
 Use `/model` commands to switch between models:
 - `/model opus` → Kimi K2.5
 - `/model sonnet` → Minimax M2.7
-- `/model haiku` → GLM 5.1
+- `/model haiku` → Kimi K2.6
 
 ## Development
 
@@ -316,6 +316,7 @@ The proxy supports all NVIDIA NIM models including:
 
 | Model | Description |
 |-------|-------------|
+| `moonshotai/kimi-k2.6` | Kimi K2.6 |
 | `moonshotai/kimi-k2.5` | Kimi K2.5 |
 | `minimaxai/minimax-m2.7` | Minimax M2.7 |
 | `z-ai/glm-5.1` | GLM 5.1 |
