@@ -779,6 +779,19 @@ function resolveRequestedModel(requestedModel, config, options = {}) {
 function getFallbackRetryModel({ status, errorText, requestedModel, resolvedModel, fallbackModel, toolModel, requiresToolSupport }) {
   const text = String(errorText || '').toLowerCase();
 
+  if (status === 429) {
+    const rateLimitFallback = getRateLimitFallbackModel({ resolvedModel, fallbackModel, toolModel, requiresToolSupport });
+    if (rateLimitFallback) {
+      logRequest('RETRY', 'MODEL', 'rate_limit_retry', {
+        requestedModel,
+        from: resolvedModel,
+        to: rateLimitFallback,
+        status,
+      });
+      return rateLimitFallback;
+    }
+  }
+
   // Tool errors → retry with a dedicated tool-capable model
   if (requiresToolSupport && toolModel && resolvedModel !== toolModel && isToolSupportError(status, text)) {
     logRequest('RETRY', 'MODEL', 'tool_error_retry', { from: resolvedModel, to: toolModel, status });
@@ -799,6 +812,20 @@ function getFallbackRetryModel({ status, errorText, requestedModel, resolvedMode
     isRetiredOrUnavailableModel(resolvedModel);
 
   return modelLikelyUnavailable ? fallbackModel : null;
+}
+
+function getRateLimitFallbackModel({ resolvedModel, fallbackModel, toolModel, requiresToolSupport }) {
+  const candidates = [fallbackModel, toolModel];
+  const normalizedResolved = String(resolvedModel || '').trim().toLowerCase();
+
+  for (const candidate of candidates) {
+    const normalizedCandidate = String(candidate || '').trim().toLowerCase();
+    if (!normalizedCandidate || normalizedCandidate === normalizedResolved) continue;
+    if (requiresToolSupport && !isModelToolCapable(normalizedCandidate)) continue;
+    return candidate;
+  }
+
+  return null;
 }
 
 // FIX: The original code had three bare `startsWith('claude-opus')` etc. branches
